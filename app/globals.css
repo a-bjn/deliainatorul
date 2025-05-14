@@ -1,26 +1,187 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(var(--heart-scale, 1));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(-10vh) rotate(-10deg) scale(var(--heart-scale, 1));
+  }
+  25% {
+    transform: translateY(-25vh) rotate(10deg) scale(var(--heart-scale, 1));
+  }
+  40% {
+    transform: translateY(-40vh) rotate(-10deg) scale(var(--heart-scale, 1));
+  }
+  55% {
+    transform: translateY(-55vh) rotate(10deg) scale(var(--heart-scale, 1));
+  }
+  70% {
+    transform: translateY(-70vh) rotate(-10deg) scale(var(--heart-scale, 1));
+  }
+  85% {
+    transform: translateY(-85vh) rotate(10deg) scale(var(--heart-scale, 1));
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(0deg) scale(var(--heart-scale, 1));
+    opacity: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes button-float {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(var(--heart-scale, 1));
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--heart-opacity, 0.8);
+    transform: translateY(-3vh) rotate(-5deg) scale(var(--heart-scale, 1));
+  }
+  20% {
+    transform: translateY(-7vh) rotate(5deg) scale(var(--heart-scale, 1));
+  }
+  30% {
+    transform: translateY(-12vh) rotate(-5deg) scale(var(--heart-scale, 1));
+  }
+  40% {
+    transform: translateY(-20vh) rotate(5deg) scale(var(--heart-scale, 1));
+  }
+  50% {
+    transform: translateY(-30vh) rotate(-5deg) scale(var(--heart-scale, 1));
+    opacity: var(--heart-opacity, 0.8);
+  }
+  60% {
+    transform: translateY(-45vh) rotate(5deg) scale(var(--heart-scale, 1));
+    opacity: 0.7;
+  }
+  70% {
+    transform: translateY(-60vh) rotate(-5deg) scale(var(--heart-scale, 1));
+    opacity: 0.6;
+  }
+  80% {
+    transform: translateY(-75vh) rotate(5deg) scale(var(--heart-scale, 1));
+    opacity: 0.4;
+  }
+  90% {
+    transform: translateY(-90vh) rotate(-5deg) scale(var(--heart-scale, 1));
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-105vh) rotate(0deg) scale(var(--heart-scale, 1));
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float var(--animation-duration, 10s) forwards linear;
+}
+
+.animate-button-float {
+  animation: button-float var(--animation-duration, 10s) forwards linear;
+}
+
+@keyframes trail-heart {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  20% {
+    transform: scale(var(--heart-scale, 1)) rotate(10deg);
+  }
+  80% {
+    opacity: 0.8;
+    transform: scale(var(--heart-scale, 1)) rotate(20deg);
+  }
+  100% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-trail-heart {
+  animation: trail-heart var(--animation-duration, 2s) forwards ease-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes click-burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-click-burst {
+  animation: click-burst 1.5s forwards ease-out;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes button-burst {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1) rotate(10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(2.5) rotate(20deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+.animate-button-burst {
+  animation: button-burst 3s forwards ease-out;
 }
